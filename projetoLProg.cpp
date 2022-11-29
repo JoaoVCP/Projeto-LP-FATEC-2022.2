@@ -27,8 +27,8 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
     char op;
     do {
-        printf("\n-------   CADASTRO DE AGREMIAÇÕES   -------\n");
-        printf("\n-------   OPÇÕES DISPONÍVEIS:       -------\n");
+        printf("\n-------   CADASTRO DE AGREMIAÇÕES    -------\n");
+        printf("\n-------   OPÇÕES DISPONÍVEIS:        -------\n");
         printf("\n 1 - CADASTRAR NOVA AGREMIAÇÃO");
         printf("\n 2 - CONSULTA TODAS AGREMIAÇÕES");
         printf("\n 3 - CONSULTA AS AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
