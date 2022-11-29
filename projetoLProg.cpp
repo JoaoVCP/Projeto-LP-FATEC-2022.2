@@ -27,17 +27,17 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
     char op;
     do {
-        printf("\n-------   CADASTRO DE AGREMIAÇÕES   -------\n");
-        printf("\n-------   OPÇÕES DISPONÍVEIS:   -------\n");
-        printf("\n 1 - CADASTRAR NOVA AGREMIAÇÃO");
-        printf("\n 2 - CONSULTA TODAS AGREMIAÇÕES");
-        printf("\n 3 - CONSULTA AS AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
-        printf("\n 4 - ALTERAR INFORMAÇÕES DAS AGREMIAÇÕES");
-        printf("\n 5 - EXCLUSÃO LÓGICA");
-        printf("\n 6 - EXCLUSÃO FÍSICA");
-        printf("\n 7 - ORDENAÇÃO POR CODIGO EM ORDEM DECRESCENTE");
-        printf("\n 8 - BUSCA BINÁRIA");
-        printf("\n 9 - RECUPERACÃO BACKUP DE UMA DETERMINADA AGREMIAÇÃO");
+        printf("\n-------   CADASTRO DE AGREMIAÃ‡Ã•ES   -------\n");
+        printf("\n-------   OPÃ‡Ã•ES DISPONÃVEIS:       -------\n");
+        printf("\n 1 - CADASTRAR NOVA AGREMIAÃ‡ÃƒO");
+        printf("\n 2 - CONSULTA TODAS AGREMIAÃ‡Ã•ES");
+        printf("\n 3 - CONSULTA AS AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
+        printf("\n 4 - ALTERAR INFORMAÃ‡Ã•ES DAS AGREMIAÃ‡Ã•ES");
+        printf("\n 5 - EXCLUSÃƒO LÃ“GICA");
+        printf("\n 6 - EXCLUSÃƒO FÃSICA");
+        printf("\n 7 - ORDENAÃ‡ÃƒO POR CODIGO EM ORDEM DECRESCENTE");
+        printf("\n 8 - BUSCA BINÃRIA");
+        printf("\n 9 - RECUPERACÃƒO BACKUP DE UMA DETERMINADA AGREMIAÃ‡ÃƒO");
         printf("\n a - SAIR\n");
         printf("\n>      SUA ESCOLHA:   ");
         op = getche();
@@ -48,11 +48,11 @@ int main(){
                 cadastro();
                 break;
             case '2':
-                printf("\nCONSULTA DE AGREMIAÇÕES...\n");
+                printf("\nCONSULTA DE AGREMIAÃ‡Ã•ES...\n");
                 consulta();
                 break;
             case '3':
-                printf("\nCONSULTAR AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
+                printf("\nCONSULTAR AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
                 consultaMaior100();
                 break;
             case '4':
@@ -74,7 +74,7 @@ int main(){
                 busca_codigo();
                 break;
             case '9':
-                printf("\nRECUPERAÇÃO BACKUP...\n");
+                printf("\nRECUPERAÃ‡ÃƒO BACKUP...\n");
                 recuperacao_backup();
                 break;
             case 'a':
@@ -100,7 +100,7 @@ void cadastro(){
     }
     agremiacao *c = (agremiacao *)malloc(sizeof(agremiacao));
     fseek(fptr, 0, 0);
-    printf("\nNome da agremiação: ");
+    printf("\nNome da agremiaÃ§Ã£o: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]",&F.nomeAgremiacao);
     printf("Codigo: ");
@@ -125,7 +125,7 @@ void consulta(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCódigo: %d",F.codigo);
+            printf("\nCÃ³digo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
@@ -143,7 +143,7 @@ void consultaMaior100(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0 && F.totalJogadores >= 100){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCódigo: %d",F.codigo);
+            printf("\nCÃ³digo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
