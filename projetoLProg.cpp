@@ -27,17 +27,17 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
     char op;
     do {
-        printf("\n-------   CADASTRO DE AGREMIAÃ‡Ã•ES    -------\n");
-        printf("\n-------   OPÃ‡Ã•ES DISPONÃVEIS:        -------\n");
-        printf("\n 1 - CADASTRAR NOVA AGREMIAÃ‡ÃƒO");
-        printf("\n 2 - CONSULTA TODAS AGREMIAÃ‡Ã•ES");
-        printf("\n 3 - CONSULTA AS AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
-        printf("\n 4 - ALTERAR INFORMAÃ‡Ã•ES DAS AGREMIAÃ‡Ã•ES");
-        printf("\n 5 - EXCLUSÃƒO LÃ“GICA");
-        printf("\n 6 - EXCLUSÃƒO FÃSICA");
-        printf("\n 7 - ORDENAÃ‡ÃƒO POR CODIGO EM ORDEM DECRESCENTE");
-        printf("\n 8 - BUSCA BINÃRIA");
-        printf("\n 9 - RECUPERACÃƒO BACKUP DE UMA DETERMINADA AGREMIAÃ‡ÃƒO");
+        printf("\n-------   CADASTRO DE AGREMIAÇÕES   -------\n");
+        printf("\n-------   OPÇÕES DISPONÍVEIS:   -------\n");
+        printf("\n 1 - CADASTRAR NOVA AGREMIAÇÃO");
+        printf("\n 2 - CONSULTA TODAS AGREMIAÇÕES");
+        printf("\n 3 - CONSULTA AS AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
+        printf("\n 4 - ALTERAR INFORMAÇÕES DAS AGREMIAÇÕES");
+        printf("\n 5 - EXCLUSÃO LÓGICA");
+        printf("\n 6 - EXCLUSÃO FÍSICA");
+        printf("\n 7 - ORDENAÇÃO POR CODIGO EM ORDEM DECRESCENTE");
+        printf("\n 8 - BUSCA BINÁRIA");
+        printf("\n 9 - RECUPERACÃO BACKUP DE UMA DETERMINADA AGREMIAÇÃO");
         printf("\n a - SAIR\n");
         printf("\n>      SUA ESCOLHA:   ");
         op = getche();
@@ -48,21 +48,23 @@ int main(){
                 cadastro();
                 break;
             case '2':
-                printf("\nCONSULTA DE AGREMIAÃ‡Ã•ES...\n");
+                printf("\nCONSULTA DE AGREMIAÇÕES...\n");
                 consulta();
                 break;
             case '3':
-                printf("\nCONSULTAR AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
+                printf("\nCONSULTAR AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
                 consultaMaior100();
                 break;
             case '4':
+                printf("\nALTERANDO INFORMAÇÕES DA AGREMIAÇÃO...\n");
                 alteracao();
                 break;
             case '5':
+                printf("\nEXCLUSÃO LÓGICA...\n");
                 exclusaoLogica();
                 break;
             case '6':
-                printf("\nEXCLUSAO FISICA...\n");
+                printf("\nEXCLUSÃO FÍSICA...\n");
                 exclusaoFisica();
                 break;
             case '7':
@@ -70,11 +72,11 @@ int main(){
                 ordena_codigo_decrescente();
                 break;
             case '8':
-                printf("\nBUSCA BINARIA ..");
+                printf("\nBUSCA BINARIA PELO NOME..");
                 busca_codigo();
                 break;
             case '9':
-                printf("\nRECUPERAÃ‡ÃƒO BACKUP...\n");
+                printf("\nRECUPERAÇÃO BACKUP DE UMA DETERMINADA AGREMIAÇÃO...\n");
                 recuperacao_backup();
                 break;
             case 'a':
@@ -100,7 +102,7 @@ void cadastro(){
     }
     agremiacao *c = (agremiacao *)malloc(sizeof(agremiacao));
     fseek(fptr, 0, 0);
-    printf("\nNome da agremiaÃ§Ã£o: ");
+    printf("\nNome da agremiação: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]",&F.nomeAgremiacao);
     printf("Codigo: ");
@@ -125,7 +127,7 @@ void consulta(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCÃ³digo: %d",F.codigo);
+            printf("\nCódigo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
@@ -143,7 +145,7 @@ void consultaMaior100(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0 && F.totalJogadores >= 100){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCÃ³digo: %d",F.codigo);
+            printf("\nCódigo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
@@ -152,13 +154,14 @@ void consultaMaior100(){
 }
 
 void alteracao(){
+    setlocale(LC_ALL, "Portuguese");
     char aux[38];
     if((fptr = fopen("agremiacao.bi","rb+")) == NULL){
         printf("\nErro");
         exit(1);
     }
 
-    printf("\nEntre com o nome da agremiacao a ser encontrada: ");
+    printf("\nEntre com o nome da agremiação a ser encontrada: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]",aux);
     fseek(fptr, 0, 0);
@@ -167,12 +170,12 @@ void alteracao(){
             if(strcmp(F.nomeAgremiacao,aux) == 0){
                 printf("\nEntre com o novo faturamento: ");
                 scanf("%f",&F.faturamento);
-                printf("\nEntre com o novo nome da agremiacao: ");
+                printf("\nEntre com o novo nome da agremiação: ");
                 setbuf(stdin,NULL);
                 scanf("%[^\n]",&F.nomeAgremiacao);
-                printf("\nEntre com o novo total de jogadores da agremiacao: ");
+                printf("\nEntre com o novo total de jogadores da agremiação: ");
                 scanf("%d",&F.totalJogadores);
-                printf("\nEntre com o novo codigo da agremiacao: ");
+                printf("\nEntre com o novo codigo da agremiação: ");
                 scanf("%d",&F.codigo);
                 fseek(fptr,ftell(fptr) - sizeof(F), 0);
                 fwrite(&F, sizeof(F), 1, fptr);
@@ -198,7 +201,7 @@ void exclusaoLogica(){
         if(F.E == 0){
             if(strcmp(F.nomeAgremiacao,aux) == 0){
                 F.E = 1;
-                fseek(fptr,ftell(fptr) - sizeof(F), 0); //ou fseek(fptr, -sizeof(F), 1);
+                fseek(fptr,ftell(fptr) - sizeof(F), 0);
                 fwrite(&F, sizeof(F), 1, fptr);
                 fseek(fptr, 0, 2);
             }
@@ -274,69 +277,77 @@ void ordena_codigo_decrescente(){
 }
 
 int busca_codigo(){
-    int low, high, mid, n, pos = -1, elem;
-    if ((fptr = fopen("agremiacao.bi", "rb")) == NULL) {
+    setlocale(LC_ALL, "Portuguese");
+	int low, high, mid, n;
+	char nome[32];
+	if((fptr = fopen("agremiacao.bi","rb+"))==NULL) {
         printf("\nErro");
         exit(1);
     }
-    printf("\nInforme o codigo da agremiacao a ser encontrada: ");
+	fseek(fptr, 0, 2);
+	n = ftell(fptr)/sizeof(F);
+	printf("\nInforme nome da agremiacao que deseja buscar corretamente \n(Caso houver letra Maiúscula, inserir a letra correspondente em Maiúscula): ");
     setbuf(stdin, NULL);
-    scanf("%d", &elem);
-    fseek(fptr, 0, 2);
-    n = ftell(fptr) / sizeof(F);
-    low = 0;
-    high = n;
-    while (low <= high) {
-        mid = (low + high) / 2;
-        fseek(fptr, mid * sizeof(F), 0);
-        fread(&F, sizeof(F), 1, fptr);
-        if (F.codigo > elem) high = mid - 1;
-        else if (F.codigo < elem) low = mid + 1;
-        else {
-            fclose(fptr);
-            pos = mid;
-            break;
-        }
-    }
-    fclose(fptr);
-    if (pos == -1) printf("\nNao foi possivel encontrar nenhum registro com o codigo informado!");
-    else printf("\nPosicao do elemento %d : %d", elem, pos);
+	scanf("%[^\n]", &nome);
+  	low = 0;
+  	high = n - 1;
+  	while(low <= high) {
+  		mid = (low + high) / 2;
+  		fseek(fptr, mid * sizeof(F), 0);
+  		fread(&F, sizeof(F), 1, fptr);
+  		if(strcmp(F.nomeAgremiacao, nome) > 0){
+  			high = mid - 1;
+		} else if (strcmp(F.nomeAgremiacao, nome) < 0) {
+			low = mid + 1;
+		} else {
+			fclose(fptr);
+            printf("\nA agremiação informada está na posição: [%d]\nCódigo: %d\nNome: %s\nTotal de Jogadores: %d\nTotal de Faturamento: %.2f\n", mid, F.codigo, F.nomeAgremiacao, F.totalJogadores, F.faturamento);
+			return -1;
+		}
+	}
+	fclose(fptr);
+    printf("\n\nA agremiação informada nao foi encontrada");
+	return -1;
 }
 
 void recuperacao_backup(){
     FILE *fptrauxiliar, *fptrback;
-
-    if((fptrback = fopen("back.bi","rb")) == NULL){
+    int aux;
+    printf("\nInforme o codigo da agremiacao que deseja recuperar: ");
+    setbuf(stdin, NULL);
+    scanf("%d",&aux);
+    fseek(fptr, 0, 0);
+    if((fptr = fopen("agremiacao.bi","rb+"))==NULL) {
         printf("\nErro");
         exit(1);
     }
-
-    if((fptrauxiliar = fopen ("auxiliar.bi","wb")) == NULL){
+    if((fptrauxiliar = fopen("auxiliar.bi", "wb")) == NULL){
         printf("\nErro");
         exit(1);
     }
-
-    if((fptr = fopen("agremiacao.bi","rb+")) == NULL){
-        if((fptr = fopen("agremiacao.bi","wb")) == NULL){
+    if((fptrback = fopen("back.bi", "rb+")) == NULL){
+        if((fptrback = fopen("back.bi", "wb")) == NULL){
             printf("\nErro");
             exit(1);
         }
     }
 
-    fseek(fptrback, 0, 2);
     while(fread(&F, sizeof(F), 1, fptrback)){
-        if(F.E == 1){
-            fseek(fptr, 0, 2);
+		if(F.E != aux){
+		    F.E = 0;
+			fseek(fptr,0,2);
+			fwrite(&F, sizeof(F), 1, fptr);
+		} else {
+            fseek(fptrauxiliar, 0, 2);
             fwrite(&F, sizeof(F), 1, fptrauxiliar);
-        } else {
-            fseek(fptr, 0, 2);
-            F.E = 0;
-            fwrite(&F, sizeof(F), 1, fptr);
-        }
-    }
-    fclose(fptr);
-    fclose(fptrauxiliar);
-    fclose(fptrback);
-    remove("agremiacao.bi");
-    rename("auxiliar.bi","agremiacao.bi");
+		}
+	}
+
+	printf("\nBackup Restaurado\n");
+	fclose(fptr);
+	fclose(fptrauxiliar);
+	fclose(fptrback);
+
+	remove("back.bi");
+	rename("auxiliar.bi", "back.bi");
 }
