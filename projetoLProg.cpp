@@ -27,17 +27,17 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
     char op;
     do {
-        printf("\n-------   CADASTRO DE AGREMIAÇÕES   -------\n");
-        printf("\n-------   OPÇÕES DISPONÍVEIS:   -------\n");
-        printf("\n 1 - CADASTRAR NOVA AGREMIAÇÃO");
-        printf("\n 2 - CONSULTA TODAS AGREMIAÇÕES");
-        printf("\n 3 - CONSULTA AS AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
-        printf("\n 4 - ALTERAR INFORMAÇÕES DAS AGREMIAÇÕES");
-        printf("\n 5 - EXCLUSÃO LÓGICA");
-        printf("\n 6 - EXCLUSÃO FÍSICA");
-        printf("\n 7 - ORDENAÇÃO POR CODIGO EM ORDEM DECRESCENTE");
+        printf("\n-------   CADASTRO DE AGREMIAÃ‡Ã•ES   -------\n");
+        printf("\n-------   OPÃ‡Ã•ES DISPONÃVEIS:   -------\n");
+        printf("\n 1 - CADASTRAR NOVA AGREMIAÃ‡ÃƒO");
+        printf("\n 2 - CONSULTA TODAS AGREMIAÃ‡Ã•ES");
+        printf("\n 3 - CONSULTA AS AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100");
+        printf("\n 4 - ALTERAR INFORMAÃ‡Ã•ES DAS AGREMIAÃ‡Ã•ES");
+        printf("\n 5 - EXCLUSÃƒO LÃ“GICA");
+        printf("\n 6 - EXCLUSÃƒO FÃSICA");
+        printf("\n 7 - ORDENAÃ‡ÃƒO POR CODIGO EM ORDEM DECRESCENTE");
         printf("\n 8 - BUSCA BINARIA PELO NOME");
-        printf("\n 9 - RECUPERACÃO BACKUP DE UMA DETERMINADA AGREMIAÇÃO");
+        printf("\n 9 - RECUPERACÃƒO BACKUP DE UMA DETERMINADA AGREMIAÃ‡ÃƒO");
         printf("\n a - SAIR\n");
         printf("\n>      SUA ESCOLHA:   ");
         op = getche();
@@ -48,23 +48,23 @@ int main(){
                 cadastro();
                 break;
             case '2':
-                printf("\nCONSULTA DE AGREMIAÇÕES...\n");
+                printf("\nCONSULTA DE AGREMIAÃ‡Ã•ES...\n");
                 consulta();
                 break;
             case '3':
-                printf("\nCONSULTAR AGREMIAÇÕES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
+                printf("\nCONSULTAR AGREMIAÃ‡Ã•ES COM TOTAL DE JOGADORES MAIOR OU IGUAL A 100...\n");
                 consultaMaior100();
                 break;
             case '4':
-                printf("\nALTERANDO INFORMAÇÕES DA AGREMIAÇÃO...\n");
+                printf("\nALTERANDO INFORMAÃ‡Ã•ES DA AGREMIAÃ‡ÃƒO...\n");
                 alteracao();
                 break;
             case '5':
-                printf("\nEXCLUSÃO LÓGICA...\n");
+                printf("\nEXCLUSÃƒO LÃ“GICA...\n");
                 exclusaoLogica();
                 break;
             case '6':
-                printf("\nEXCLUSÃO FÍSICA...\n");
+                printf("\nEXCLUSÃƒO FÃSICA...\n");
                 exclusaoFisica();
                 break;
             case '7':
@@ -76,7 +76,7 @@ int main(){
                 busca_nome();
                 break;
             case '9':
-                printf("\nRECUPERAÇÃO BACKUP DE UMA DETERMINADA AGREMIAÇÃO...\n");
+                printf("\nRECUPERAÃ‡ÃƒO BACKUP DE UMA DETERMINADA AGREMIAÃ‡ÃƒO...\n");
                 recuperacao_backup();
                 break;
             case 'a':
@@ -102,7 +102,7 @@ void cadastro(){
     }
     agremiacao *c = (agremiacao *)malloc(sizeof(agremiacao));
     fseek(fptr, 0, 0);
-    printf("\nNome da agremiação: ");
+    printf("\nNome da agremiaÃ§Ã£o: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]",&F.nomeAgremiacao);
     printf("Codigo: ");
@@ -127,7 +127,7 @@ void consulta(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCódigo: %d",F.codigo);
+            printf("\nCÃ³digo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
@@ -145,7 +145,7 @@ void consultaMaior100(){
     while(fread(&F, sizeof(F), 1, fptr)){
         if(F.E == 0 && F.totalJogadores >= 100){
             printf("\nNome: %s",F.nomeAgremiacao);
-            printf("\nCódigo: %d",F.codigo);
+            printf("\nCÃ³digo: %d",F.codigo);
             printf("\nTotal de Jogadores: %d",F.totalJogadores);
             printf("\nFaturamento: R$%.2f\n\n",F.faturamento);
         }
@@ -161,7 +161,7 @@ void alteracao(){
         exit(1);
     }
 
-    printf("\nEntre com o nome da agremiação a ser encontrada: ");
+    printf("\nEntre com o nome da agremiaÃ§Ã£o a ser encontrada: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]",aux);
     fseek(fptr, 0, 0);
@@ -170,12 +170,12 @@ void alteracao(){
             if(strcmp(F.nomeAgremiacao,aux) == 0){
                 printf("\nEntre com o novo faturamento: ");
                 scanf("%f",&F.faturamento);
-                printf("\nEntre com o novo nome da agremiação: ");
+                printf("\nEntre com o novo nome da agremiaÃ§Ã£o: ");
                 setbuf(stdin,NULL);
                 scanf("%[^\n]",&F.nomeAgremiacao);
-                printf("\nEntre com o novo total de jogadores da agremiação: ");
+                printf("\nEntre com o novo total de jogadores da agremiaÃ§Ã£o: ");
                 scanf("%d",&F.totalJogadores);
-                printf("\nEntre com o novo codigo da agremiação: ");
+                printf("\nEntre com o novo codigo da agremiaÃ§Ã£o: ");
                 scanf("%d",&F.codigo);
                 fseek(fptr,ftell(fptr) - sizeof(F), 0);
                 fwrite(&F, sizeof(F), 1, fptr);
@@ -286,7 +286,7 @@ int busca_nome(){
     }
 	fseek(fptr, 0, 2);
 	n = ftell(fptr)/sizeof(F);
-	printf("\nInforme nome da agremiacao que deseja buscar corretamente \n(Caso houver letra Maiúscula, inserir a letra correspondente em Maiúscula): ");
+	printf("\nInforme nome da agremiacao que deseja buscar corretamente \n(Caso houver letra MaiÃºscula, inserir a letra correspondente em MaiÃºscula): ");
     setbuf(stdin, NULL);
 	scanf("%[^\n]", &nome);
   	low = 0;
@@ -301,12 +301,12 @@ int busca_nome(){
 			low = mid + 1;
 		} else {
 			fclose(fptr);
-            printf("\nA agremiação informada está na posição: [%d]\nCódigo: %d\nNome: %s\nTotal de Jogadores: %d\nTotal de Faturamento: %.2f\n\n", mid, F.codigo, F.nomeAgremiacao, F.totalJogadores, F.faturamento);
+            printf("\nA agremiaÃ§Ã£o informada estÃ¡ na posiÃ§Ã£o: [%d]\nCÃ³digo: %d\nNome: %s\nTotal de Jogadores: %d\nTotal de Faturamento: %.2f\n\n", mid, F.codigo, F.nomeAgremiacao, F.totalJogadores, F.faturamento);
 			return -1;
 		}
 	}
 	fclose(fptr);
-    printf("\n\nA agremiação informada nao foi encontrada\n\n");
+    printf("\n\nA agremiaÃ§Ã£o informada nao foi encontrada\n\n");
 	return -1;
 }
 
